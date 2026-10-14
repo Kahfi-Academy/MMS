@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Madrasah Maintenance Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#E9EFED;--surface:#fff;--ink:#13221F;--muted:#566864;--line:#D2DCD9;--green:#0D5C50;--green-d:#083F37;--brass:#C9A24B;--focus:#B77F0C}
+  @media (prefers-color-scheme:dark){:root{--bg:#0D1614;--surface:#15231F;--ink:#E7F0ED;--muted:#98ABA6;--line:#2B4640;--green:#1F8B77;--focus:#E0B24F}}
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%}
+  body{background:var(--bg);color:var(--ink);font:16px/1.5 "Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:flex;flex-direction:column;min-height:100vh}
+  :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+  header{position:relative;background:linear-gradient(180deg,var(--green-d),#0B4A41);color:#fff;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23C9A24B' stroke-width='1' opacity='.55'%3E%3Crect x='10' y='10' width='28' height='28'/%3E%3Crect x='10' y='10' width='28' height='28' transform='rotate(45 24 24)'/%3E%3Ccircle cx='24' cy='24' r='4'/%3E%3C/g%3E%3C/svg%3E");-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000);mask-image:linear-gradient(90deg,transparent 35%,#000)}
+  .in{position:relative;max-width:1080px;margin:0 auto;padding:22px 20px}
+  h1{font-family:"Young Serif",Georgia,serif;font-weight:400;font-size:clamp(1.5rem,3.5vw,2.1rem);line-height:1.15;margin:0}
+  header p{margin:6px 0 0;opacity:.8}
+  main{flex:1;width:100%;max-width:1080px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:14px}
+  .notice{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .notice p{margin:0;color:var(--muted);max-width:60ch;font-size:.95rem}
+  .btn{display:inline-block;background:var(--green);color:#fff;font-weight:600;text-decoration:none;border-radius:8px;padding:12px 20px;white-space:nowrap}
+  .btn:hover{filter:brightness(1.1)}
+  .frame{position:relative;flex:1;min-height:70vh;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .loading{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:var(--muted)}
+  .loading.hide{display:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="in">
+    <h1>Madrasah maintenance desk</h1>
+    <p>For madrasah staff. Sign in with your school Google account.</p>
+  </div>
+</header>
+
+<main>
+  <div class="notice">
+    <p>If the form below stays blank or asks you to sign in, open it in its own tab. This always works for staff signed in to their school account.</p>
+    <a class="btn" id="open" target="_blank" rel="noopener">Open the maintenance desk</a>
+  </div>
+
+  <div class="frame">
+    <div class="loading" id="loading">Loading the maintenance desk…</div>
+    <iframe id="app" title="Madrasah Maintenance Desk"
+      allow="clipboard-write" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</main>
+
+<script>
+  // ===== PASTE YOUR APPS SCRIPT WEB APP LINK HERE (the one that ends in /exec) =====
+  var APP_URL = "https://script.google.com/a/macros/alsagoff.edu.sg/s/AKfycbxY3K2-RTjqwsokjNozOQ4LoXeFTZDbKk3qFcQmEBiG8jCrRCQ8FvPtYVbNxXxGHHH8/exec";
+  // ================================================================================
+  document.getElementById('open').href = APP_URL;
+  document.getElementById('app').src = APP_URL;
+  document.getElementById('app').addEventListener('load', function () {
+    document.getElementById('loading').classList.add('hide');
+  });
+</script>
+</body>
+</html>
